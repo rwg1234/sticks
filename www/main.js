@@ -36,7 +36,7 @@ function makeTwigs(n, t) {
 }
 
 function create() {
-    var images = makeTwigs(100, this);
+    var images = makeTwigs(20, this);
 
     this.input.on('dragstart', function (pointer, gameObject) {
 
