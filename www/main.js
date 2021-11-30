@@ -12,7 +12,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-    this.load.image("basic_png_twig", "https://cdn.pixabay.com/photo/2012/04/24/21/49/branch-41013_1280.png")
+    this.load.image("basic_png_twig", "assets/stick.png")
 }
 
 function randRange(min, max) {
@@ -26,8 +26,8 @@ function makeTwigs(n, t) {
         var y = randRange(0, game.config.height);
 
         var image = t.add.image(x, y, 'basic_png_twig').setInteractive();
-        image.setScale(1/5, 1/5);
-        image.setAngle(randRange(60, 120));
+        //image.setScale(1/5, 1/5);
+        image.setAngle(randRange(-15, 15));
 
         t.input.setDraggable(image);
 
