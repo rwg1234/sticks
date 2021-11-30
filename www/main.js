@@ -2,6 +2,7 @@ var config = {
     type: Phaser.AUTO,
     width: window.innerWidth,
     height: window.innerHeight,
+    backgroundColor: '#ffffff',
     scene: {
         preload: preload,
         create: create
@@ -35,8 +36,24 @@ function makeTwigs(n, t) {
     return images;
 }
 
+var gameObj;
+var sticks = [];
+
+function createStick() {
+    sticks = sticks.concat(makeTwigs(1, gameObj));
+}
+
+function clearSticks() {
+    for (var i = 0; i < sticks.length; i++) {
+        var s = sticks[i];
+        s.destroy();
+    }
+    sticks = [];
+}
+
 function create() {
-    var images = makeTwigs(20, this);
+    gameObj = this;
+    //var images = makeTwigs(20, this);
 
     this.input.on('dragstart', function (pointer, gameObject) {
 

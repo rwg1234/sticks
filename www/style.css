@@ -1,7 +1,14 @@
 html, body {
     margin: 0;
     height: 100%;
+    background-color:aqua;
+    text-align: center;
 }
+button {
+    font-size: 2em;
+}
+/*
+full window canvas
 canvas {
     position:absolute;
     top:0px;
@@ -11,4 +18,10 @@ canvas {
     margin: 0;
     width: 100vw;
     height: 100vh;
+}
+*/
+/* partial window canvas */
+canvas {
+    width: 100vw;
+    height: 90vh;
 }
