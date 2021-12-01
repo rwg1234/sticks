@@ -22,12 +22,13 @@ function randRange(min, max) {
 function makeTwigs(n, t) {
     var images = [];
     for (var i = 0; i<n; i++) {
-        var x = randRange(0, game.config.width);
-        var y = randRange(0, game.config.height);
+        var x = game.config.width / 3//randRange(0, game.config.width);
+        var y = game.config.height / 3 //randRange(0, game.config.height);
+        x += sticks.length * 100;
 
         var image = t.add.image(x, y, 'basic_png_twig').setInteractive();
         //image.setScale(1/5, 1/5);
-        image.setAngle(randRange(-15, 15));
+        image.setAngle(0);//randRange(-15, 15));
 
         t.input.setDraggable(image);
 
