@@ -90,3 +90,18 @@ function create() {
     });
 
 }
+
+function deleteSelected() {
+    var new_sticks = [];
+    for (var i = 0; i < sticks.length; i++) {
+        if (selected_sticks_indices.has(i)) {
+            // stick is selected, so it gets deleted
+            sticks[i].destroy();
+            selected_sticks_indices.delete(i); // deselect its index
+        } else {
+            // stick is not selected, so it gets kept
+            new_sticks.push(sticks[i]);
+        }
+    }
+    sticks = new_sticks; // keep the new array of sticks
+}
