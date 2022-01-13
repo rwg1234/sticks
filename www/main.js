@@ -19,8 +19,8 @@ function randRange(min, max) {
     return (max-min)*Math.random() + min;
 }
 
-function makeTwigs(n, t) {
-    var images = [];
+function makeSticks(n, t) {
+    var new_sticks = [];
     for (var i = 0; i<n; i++) {
         var x = game.config.width / 3//randRange(0, game.config.width);
         var y = game.config.height / 3 //randRange(0, game.config.height);
@@ -32,16 +32,17 @@ function makeTwigs(n, t) {
 
         t.input.setDraggable(image);
 
-        images.push(image);
+        new_sticks.push(image);
+
     }
-    return images;
+    return new_sticks;
 }
 
 var gameObj;
 var sticks = [];
 
 function createStick() {
-    sticks.push(makeTwigs(1, gameObj)[0]);
+    sticks.push(makeSticks(1, gameObj)[0]);
 }
 
 function clearSticks() {
@@ -67,6 +68,11 @@ function create() {
         gameObject.x = dragX;
         gameObject.y = dragY;
 
+    });
+
+    this.input.on('gameobjectdown', function(pointer, gameObject) {
+        let i = sticks.indexOf(gameObject);
+        console.log(i);
     });
 
 }
