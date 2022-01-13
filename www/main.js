@@ -41,7 +41,7 @@ var gameObj;
 var sticks = [];
 
 function createStick() {
-    sticks = sticks.concat(makeTwigs(1, gameObj));
+    sticks.push(makeTwigs(1, gameObj)[0]);
 }
 
 function clearSticks() {
