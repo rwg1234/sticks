@@ -40,6 +40,7 @@ function makeSticks(n, t) {
 
 var gameObj;
 var sticks = [];
+var selected_sticks_indices = new Set();
 
 function createStick() {
     sticks.push(makeSticks(1, gameObj)[0]);
@@ -53,6 +54,7 @@ function clearSticks() {
     sticks = [];
 }
 
+var is_dragging = false; // to differentiate between clicking and dragging
 function create() {
     gameObj = this;
     //var images = makeTwigs(20, this);
@@ -64,15 +66,27 @@ function create() {
     }, this);
 
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-
+        
         gameObject.x = dragX;
         gameObject.y = dragY;
+        is_dragging = true;
 
     });
 
-    this.input.on('gameobjectdown', function(pointer, gameObject) {
-        let i = sticks.indexOf(gameObject);
-        console.log(i);
+    this.input.on('gameobjectup', function(pointer, gameObject) {
+        if (!is_dragging) {
+            let i = sticks.indexOf(gameObject);
+            if (selected_sticks_indices.has(i)) {
+                // stick is already selected
+                selected_sticks_indices.delete(i); // remove from "selected" set
+                sticks[i].clearTint(); // remove visual effect
+            } else {
+                // not currently selected
+                selected_sticks_indices.add(i); // add to "selected" set
+                sticks[i].setTintFill(0x00FFFF); // add visual effect
+            }
+        }
+        is_dragging = false;
     });
 
 }
