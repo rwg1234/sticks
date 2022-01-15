@@ -3,10 +3,18 @@
     <title>E-Concrete Demonstratives</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body">
+<body id="body" onload="loading();">
     <button onclick="createStick()">Add 1 stick</button>
     <button onclick="clearSticks()">Clear all</button>
     <button onclick="deleteSelected()">Delete selected</button>
+    <button onclick="plus()">+</button>
+    <button onclick="plusplus()">++</button>
+    <label id="StickCounter" style="color : black"></label>
+    <button onclick="minus()">-</button>
+    <button onclick="minusminus()">--</button>
+    <button onclick="lock()">Lock</button>
+    <button onclick="minusminus()">+</button>
+    <button onclick="minusminus()">-</button>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
 </body>

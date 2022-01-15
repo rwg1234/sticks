@@ -105,3 +105,9 @@ function deleteSelected() {
     }
     sticks = new_sticks; // keep the new array of sticks
 }
+
+function loading() {
+    var StickCounter = 0;
+    document.getElementById("StickCounter").innerHTML = StickCounter;
+}
+
