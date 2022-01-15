@@ -41,9 +41,13 @@ function makeSticks(n, t) {
 var gameObj;
 var sticks = [];
 var selected_sticks_indices = new Set();
+var StickCounter = 1;
+var BaseCounter = 1;
 
-function createStick() {
-    sticks.push(makeSticks(1, gameObj)[0]);
+function createSticks() {
+    for (var i=0; i<StickCounter; i++){
+        sticks.push(makeSticks(1, gameObj)[0]);
+    }
 }
 
 function clearSticks() {
@@ -107,7 +111,28 @@ function deleteSelected() {
 }
 
 function loading() {
-    var StickCounter = 0;
     document.getElementById("StickCounter").innerHTML = StickCounter;
+    document.getElementById("BaseCounter").innerHTML = BaseCounter;
+}
+function incrementSticks(n) {
+    StickCounter += n;
+    if(StickCounter  < 1) {
+        StickCounter = 1;
+    }
+    if(StickCounter > 99) {
+        StickCounter = 99;
+    }
+    loading();
+}
+
+function incrementBase(n) {
+    BaseCounter += n;
+    if(BaseCounter <1 ) {
+        BaseCounter = 1;
+    }
+    if(BaseCounter > 12) {
+        BaseCounter = 12;
+    }
+    loading();
 }
 

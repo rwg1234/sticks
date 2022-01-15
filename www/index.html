@@ -4,17 +4,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="body" onload="loading();">
-    <button onclick="createStick()">Add 1 stick</button>
     <button onclick="clearSticks()">Clear all</button>
     <button onclick="deleteSelected()">Delete selected</button>
-    <button onclick="plus()">+</button>
-    <button onclick="plusplus()">++</button>
-    <label id="StickCounter" style="color : black"></label>
-    <button onclick="minus()">-</button>
-    <button onclick="minusminus()">--</button>
     <button onclick="lock()">Lock</button>
-    <button onclick="minusminus()">+</button>
-    <button onclick="minusminus()">-</button>
+    <button onclick="incrementBase(1)">+</button>
+    <label id="BaseCounter" style="color : black"></label>
+    <button onclick="incrementBase(-1)">-</button>
+    <button onclick="createSticks()">Add sticks</button>
+    <button onclick="incrementSticks(10)">++</button>
+    <button onclick="incrementSticks(1)">+</button>
+    <label id="StickCounter" style="color : black"></label>
+    <button onclick="incrementSticks(-1)">-</button>
+    <button onclick="incrementSticks(-10)">--</button>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
 </body>
