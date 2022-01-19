@@ -43,6 +43,7 @@ var sticks = [];
 var selected_sticks_indices = new Set();
 var StickCounter = 1;
 var BaseCounter = 1;
+var Lock_unlock = "Lock";
 
 function createSticks() {
     for (var i=0; i<StickCounter; i++){
@@ -113,6 +114,7 @@ function deleteSelected() {
 function loading() {
     document.getElementById("StickCounter").innerHTML = StickCounter;
     document.getElementById("BaseCounter").innerHTML = BaseCounter;
+    document.getElementById("lock_unlock").innerHTML = Lock_unlock;
 }
 function incrementSticks(n) {
     StickCounter += n;
@@ -126,13 +128,23 @@ function incrementSticks(n) {
 }
 
 function incrementBase(n) {
-    BaseCounter += n;
-    if(BaseCounter <1 ) {
-        BaseCounter = 1;
-    }
-    if(BaseCounter > 12) {
-        BaseCounter = 12;
+    if (Lock_unlock == "Lock") {
+        BaseCounter += n;
+        if(BaseCounter <1 ) {
+            BaseCounter = 1;
+        }
+        if(BaseCounter > 12) {
+            BaseCounter = 12;
+        }
     }
     loading();
 }
 
+function lock() {
+    if (Lock_unlock == "Lock") {
+        Lock_unlock = "Unlock";
+    } else {
+        Lock_unlock = "Lock";
+    }
+    loading();
+}
