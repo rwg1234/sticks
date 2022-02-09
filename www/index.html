@@ -3,7 +3,7 @@
     <title>E-Concrete Demonstratives</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body" onload="loading();">
+<body id="body" onload="updateLabels();">
     <button onclick="clearSticks()">Clear all</button>
     <button onclick="deleteSelected()">Delete selected</button>
     <button onclick="lock()" id="lock_unlock">Lock</button>
@@ -16,6 +16,8 @@
     <label id="StickCounter" style="color : black"></label>
     <button onclick="incrementSticks(-1)">-</button>
     <button onclick="incrementSticks(-10)">--</button>
+    <button onclick="groupSelected()">Group Selected</button>
+    <button onclick="ungroupSelected()">Ungroup Selected</button>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
     <script src="toword.js"></script>
