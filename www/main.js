@@ -22,9 +22,20 @@ function randRange(min, max) {
 }
 
 function makeBox(t) {
-    var dist = game.config.width / 10;
-    var x = game.config.width / 3 + (Math.random() - 0.5)*dist;
-    var y = game.config.height / 3 + (Math.random() - 0.5)*dist;
+    // find average position of selected sticks
+    var x_total = 0;
+    var y_total = 0;
+    var count = 0;
+    for (var i = 0; i < sticks.length; i++) {
+        if (selected_sticks_indices.has(i)) {
+            x_total += sticks[i].x;
+            y_total += sticks[i].y;
+            count += 1;
+        }
+    }
+    let x = x_total / count;
+    let y = y_total / count;
+
     var image = t.add.image(x, y, 'basic_png_box').setInteractive();
     t.input.setDraggable(image);
     boxes.push(image);
@@ -47,6 +58,12 @@ function makeSticks(n, t) {
 
     }
     return new_sticks;
+}
+
+function makeStickHere(x, y) {
+    var image = gameObj.add.image(x, y, 'basic_png_twig').setInteractive();
+    gameObj.input.setDraggable(image);
+    sticks.push(image);
 }
 
 var gameObj;
@@ -195,20 +212,30 @@ function lock() {
 
 function groupSelected() {
     if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
-        deleteSelected();
         makeBox(gameObj);
+        deleteSelected();
     } else {
         alert("Wrong number of sticks");
     }
 }
 
 function ungroupSelected() {
+    // first make the new sticks
+    for (var i = 0; i < boxes.length; i++) {
+        if (selected_boxes_indices.has(i)) {
+            // make as many sticks as BaseCounter says
+            for (var j = 0; j < BaseCounter; j++) {
+                // place the stick randomly within the box's footprint
+                let x = boxes[i].x + (Math.random()-0.5)*boxes[i].width;
+                let y = boxes[i].y + (Math.random()-0.5)*boxes[i].height;
+                makeStickHere(x, y);
+            }
+        }
+    }
+    // then delete the boxes
     let number_of_new_sticks = selected_boxes_indices.size * BaseCounter;
     let backup_selected_sticks = selected_sticks_indices;
     selected_sticks_indices = new Set();
     deleteSelected();
     selected_sticks_indices = backup_selected_sticks;
-    for(var i = 0; i < number_of_new_sticks; i++) {
-        sticks.push(makeSticks(1, gameObj)[0]);
-    }
 }
