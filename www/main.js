@@ -11,6 +11,7 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+
 function preload() {
     this.load.image("basic_png_twig", "assets/stick.png")
 }
@@ -112,8 +113,10 @@ function deleteSelected() {
 }
 
 function loading() {
-    document.getElementById("StickCounter").innerHTML = StickCounter;
-    document.getElementById("BaseCounter").innerHTML = BaseCounter;
+    document.getElementById("StickCounter").innerHTML = convert(StickCounter);
+    document.getElementById("BaseCounter").innerHTML = convert(BaseCounter);
+   // document.getElementById("StickCounter").innerHTML = StickCounter;
+   // document.getElementById("BaseCounter").innerHTML = BaseCounter;
     document.getElementById("lock_unlock").innerHTML = Lock_unlock;
 }
 function incrementSticks(n) {
