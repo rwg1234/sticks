@@ -3,19 +3,21 @@
     <title>E-Concrete Demonstratives</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body" onload="loading();">
-    <button onclick="clearSticks()">Clear all</button>
-    <button onclick="deleteSelected()">Delete selected</button>
-    <button onclick="lock()" id="lock_unlock">Lock</button>
-    <button onclick="incrementBase(1)">+</button>
-    <label id="BaseCounter" style="color : black"></label>
-    <button onclick="incrementBase(-1)">-</button>
-    <button onclick="createSticks()">Add sticks</button>
-    <button onclick="incrementSticks(10)">++</button>
-    <button onclick="incrementSticks(1)">+</button>
-    <label id="StickCounter" style="color : black"></label>
-    <button onclick="incrementSticks(-1)">-</button>
-    <button onclick="incrementSticks(-10)">--</button>
+<body id="body" class="container" onload="loading();">
+    <ClearAllButton onclick="clearSticks()">Clear all</ClearAllButton>
+    <ClearSelectedButton onclick="deleteSelected()">Delete selected</ClearSelectedButton>
+    <Based>Base is:</Based>
+    <BaseLock onclick="lock()" id="lock_unlock">Lock</BaseLock>
+    <BaseIncreaseButton onclick="incrementBase(1)">+</BaseIncreaseButton>
+    <BaseLabel id="BaseCounter" style="color : black"></BaseLabel>
+    <BaseDecreaseButton onclick="incrementBase(-1)">-</BaseDecreaseButton>
+    <AddSticksButton onclick="createSticks()"> Add </AddSticksButton>
+    <AddStickslabel onclick="createSticks()"> sticks. </AddSticksLabel>
+    <SticksIncreaseRapidButton onclick="incrementSticks(10)">++</SticksIncreaseRapidButton>
+    <SticksIncreaseSlowButton onclick="incrementSticks(1)">+</SticksIncreaseSlowButton>
+    <StickCounter id="StickCounter"></StickCounter>
+    <SticksDecreaseSlowButton onclick="incrementSticks(-1)">-</SticksDecreaseSlowButton>
+    <SticksDecreaseRapidButton onclick="incrementSticks(-10)">--</SticksDecreaseRapidButton>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
     <script src="toword.js"></script>

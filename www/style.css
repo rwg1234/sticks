@@ -1,28 +1,149 @@
+.container {
+	display:grid;
+	grid-gap: 20px;
+	height: 100vh;
+	grid-template-rows: 3em 3em 3em 91em;
+	grid-template-columns: 10fr 10fr 15fr 10fr 10fr auto 5fr 10fr 15fr 10fr 5fr 5fr 10fr 5fr;
+	grid-template-areas:
+	  ". . . . . BaseIncreaseButton . . . . SticksIncreaseRapidButton SticksIncreaseSlowButton . ."
+	  ". ClearAllButton ClearSelectedButton . Based BaseLabel . BaseLock . AddSticksButton StickCounter StickCounter AddStickslabel ."
+	  ". . . . . BaseDecreaseButton . . . . SticksDecreaseRapidButton SticksDecreaseSlowButton . ."
+	  ". canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas";
+}
+
 html, body {
     margin: 0;
     height: 100%;
     background-color:aqua;
     text-align: center;
 }
-button {
+
+BaseLock {
+	grid-area: BaseLock;
+    font-size: 2em;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: salmon;
+}
+
+Based {
+	grid-area: Based;
+    font-size: 2em;
+	vertical-align: center;
+	text-align: right;
+}
+
+
+BaseLabel {
+	grid-area: BaseLabel;
     font-size: 2em;
 }
 
-/*
-full window canvas
-canvas {
-    position:absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
+BaseIncreaseButton {
+	grid-area: BaseIncreaseButton;
+	font-size: 2em;
 }
-*/
+
+BaseDecreaseButton {
+	grid-area: BaseDecreaseButton;
+	font-size: 2em;
+}
+
+SticksIncreaseRapidButton {
+	grid-area: SticksIncreaseRapidButton;
+	font-size: 2em;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+SticksIncreaseSlowButton {
+	grid-area: SticksIncreaseSlowButton;
+	font-size: 2em;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+ClearAllButton {
+	grid-area: ClearAllButton;
+    font-size: 2em;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: red;
+}
+
+ClearSelectedButton {
+	grid-area: ClearSelectedButton;
+    font-size: auto;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: rebeccapurple;
+	color: white;
+}
+
+AddSticksButton {
+	grid-area: AddSticksButton;
+    font-size: 2em;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: lime;
+	color: white;
+}
+
+StickCounter {
+	grid-area: StickCounter;
+    font-size: 2em;
+	border-style: none;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: green;
+	color: black;
+}
+
+AddStickslabel {
+	grid-area: AddStickslabel;
+    font-size: 2em;
+	border-style: none;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: green;
+	color: white;
+}
+
+SticksDecreaseRapidButton {
+	grid-area: SticksDecreaseRapidButton;
+    font-size: 2em;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+SticksDecreaseSlowButton {
+	grid-area: SticksDecreaseSlowButton;
+    font-size: 2em;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+}
+
 /* partial window canvas */
 canvas {
-    width: 100vw;
-    height: 90vh;
+	grid-area:canvas;
 }
