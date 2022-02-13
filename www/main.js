@@ -13,11 +13,32 @@ var game = new Phaser.Game(config);
 
 
 function preload() {
-    this.load.image("basic_png_twig", "assets/stick.png")
+    this.load.image("basic_png_twig", "assets/stick.png");
+    this.load.image("basic_png_box", "assets/box.png");
 }
 
 function randRange(min, max) {
     return (max-min)*Math.random() + min;
+}
+
+function makeBox(t) {
+    // find average position of selected sticks
+    var x_total = 0;
+    var y_total = 0;
+    var count = 0;
+    for (var i = 0; i < sticks.length; i++) {
+        if (selected_sticks_indices.has(i)) {
+            x_total += sticks[i].x;
+            y_total += sticks[i].y;
+            count += 1;
+        }
+    }
+    let x = x_total / count;
+    let y = y_total / count;
+
+    var image = t.add.image(x, y, 'basic_png_box').setInteractive();
+    t.input.setDraggable(image);
+    boxes.push(image);
 }
 
 function makeSticks(n, t) {
@@ -25,7 +46,7 @@ function makeSticks(n, t) {
     for (var i = 0; i<n; i++) {
         var x = game.config.width / 3//randRange(0, game.config.width);
         var y = game.config.height / 3 //randRange(0, game.config.height);
-        x += sticks.length * 100;
+        x += (sticks.length + new_sticks.length) * 100;
 
         var image = t.add.image(x, y, 'basic_png_twig').setInteractive();
         //image.setScale(1/5, 1/5);
@@ -39,11 +60,19 @@ function makeSticks(n, t) {
     return new_sticks;
 }
 
+function makeStickHere(x, y) {
+    var image = gameObj.add.image(x, y, 'basic_png_twig').setInteractive();
+    gameObj.input.setDraggable(image);
+    sticks.push(image);
+}
+
 var gameObj;
 var sticks = [];
+var boxes = [];
 var selected_sticks_indices = new Set();
+var selected_boxes_indices = new Set();
 var StickCounter = 1;
-var BaseCounter = 1;
+var BaseCounter = 3;
 var Lock_unlock = "Lock";
 
 function createSticks() {
@@ -81,15 +110,30 @@ function create() {
 
     this.input.on('gameobjectup', function(pointer, gameObject) {
         if (!is_dragging) {
-            let i = sticks.indexOf(gameObject);
-            if (selected_sticks_indices.has(i)) {
-                // stick is already selected
-                selected_sticks_indices.delete(i); // remove from "selected" set
-                sticks[i].clearTint(); // remove visual effect
-            } else {
-                // not currently selected
-                selected_sticks_indices.add(i); // add to "selected" set
-                sticks[i].setTintFill(0x00FFFF); // add visual effect
+            if (sticks.includes(gameObject)) {
+                // clicked object is a stick
+                let i = sticks.indexOf(gameObject);
+                if (selected_sticks_indices.has(i)) {
+                    // stick is already selected
+                    selected_sticks_indices.delete(i); // remove from "selected" set
+                    sticks[i].clearTint(); // remove visual effect
+                } else {
+                    // not currently selected
+                    selected_sticks_indices.add(i); // add to "selected" set
+                    sticks[i].setTintFill(0x00FFFF); // add visual effect
+                }
+            } else if (boxes.includes(gameObject)) {
+                // clicked object is a box
+                let i = boxes.indexOf(gameObject);
+                if (selected_boxes_indices.has(i)) {
+                    // box is already selected
+                    selected_boxes_indices.delete(i); // remove from "selected" set
+                    boxes[i].clearTint(); // remove visual effect
+                } else {
+                    // not currently selected
+                    selected_boxes_indices.add(i); // add to "selected" set
+                    boxes[i].setTintFill(0x00FFFF); // add visual effect
+                }
             }
         }
         is_dragging = false;
@@ -110,9 +154,23 @@ function deleteSelected() {
         }
     }
     sticks = new_sticks; // keep the new array of sticks
+
+    // now do the same for the boxes
+    var new_boxes = [];
+    for (var i = 0; i < boxes.length; i++) {
+        if (selected_boxes_indices.has(i)) {
+            // box is selected, so it gets deleted
+            boxes[i].destroy();
+            selected_boxes_indices.delete(i); // deselect its index
+        } else {
+            // box is not selected, so it gets kept
+            new_boxes.push(boxes[i]);
+        }
+    }
+    boxes = new_boxes; // keep the new array of boxes
 }
 
-function loading() {
+function updateLabels() {
     document.getElementById("StickCounter").innerHTML = convert(StickCounter);
     document.getElementById("BaseCounter").innerHTML = convert(BaseCounter);
    // document.getElementById("StickCounter").innerHTML = StickCounter;
@@ -127,7 +185,7 @@ function incrementSticks(n) {
     if(StickCounter > 99) {
         StickCounter = 99;
     }
-    loading();
+    updateLabels();
 }
 
 function incrementBase(n) {
@@ -140,7 +198,7 @@ function incrementBase(n) {
             BaseCounter = 12;
         }
     }
-    loading();
+    updateLabels();
 }
 
 function lock() {
@@ -149,5 +207,35 @@ function lock() {
     } else {
         Lock_unlock = "Lock";
     }
-    loading();
+    updateLabels();
+}
+
+function groupSelected() {
+    if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
+        makeBox(gameObj);
+        deleteSelected();
+    } else {
+        alert("Wrong number of sticks");
+    }
+}
+
+function ungroupSelected() {
+    // first make the new sticks
+    for (var i = 0; i < boxes.length; i++) {
+        if (selected_boxes_indices.has(i)) {
+            // make as many sticks as BaseCounter says
+            for (var j = 0; j < BaseCounter; j++) {
+                // place the stick randomly within the box's footprint
+                let x = boxes[i].x + (Math.random()-0.5)*boxes[i].width;
+                let y = boxes[i].y + (Math.random()-0.5)*boxes[i].height;
+                makeStickHere(x, y);
+            }
+        }
+    }
+    // then delete the boxes
+    let number_of_new_sticks = selected_boxes_indices.size * BaseCounter;
+    let backup_selected_sticks = selected_sticks_indices;
+    selected_sticks_indices = new Set();
+    deleteSelected();
+    selected_sticks_indices = backup_selected_sticks;
 }

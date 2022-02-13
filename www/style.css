@@ -5,9 +5,9 @@
 	grid-template-rows: 3em 3em 3em 91em;
 	grid-template-columns: 10fr 10fr 15fr 10fr 10fr auto 5fr 10fr 15fr 10fr 5fr 5fr 10fr 5fr;
 	grid-template-areas:
-	  ". . . . . BaseIncreaseButton . . . . SticksIncreaseRapidButton SticksIncreaseSlowButton . ."
+	  "GroupButton . . . . BaseIncreaseButton . . . . SticksIncreaseRapidButton SticksIncreaseSlowButton . ."
 	  ". ClearAllButton ClearSelectedButton . Based BaseLabel . BaseLock . AddSticksButton StickCounter StickCounter AddStickslabel ."
-	  ". . . . . BaseDecreaseButton . . . . SticksDecreaseRapidButton SticksDecreaseSlowButton . ."
+	  "UngroupButton . . . . BaseDecreaseButton . . . . SticksDecreaseRapidButton SticksDecreaseSlowButton . ."
 	  ". canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas";
 }
 
@@ -17,6 +17,28 @@ html, body {
     background-color:aqua;
     text-align: center;
 }
+
+GroupButton {
+	grid-area: GroupButton;
+    font-size: auto;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: lime;
+}	
+
+UngroupButton {
+	grid-area: UngroupButton;
+    font-size: auto;
+	border-style: solid;
+	border-collapse: gray;
+	border-width: 3px;
+	border-radius: 5px;
+	vertical-align: center;
+	background-color: pink;
+}	
 
 BaseLock {
 	grid-area: BaseLock;
