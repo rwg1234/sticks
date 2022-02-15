@@ -44,10 +44,24 @@ function makeBox(t) {
 function makeSticks(n, t) {
     var new_sticks = [];
     for (var i = 0; i<n; i++) {
-        var x = game.config.width / 3//randRange(0, game.config.width);
-        var y = game.config.height / 3 //randRange(0, game.config.height);
-        x += (sticks.length + new_sticks.length) * 100;
-
+        var placeable = false;
+        while (placeable == false) {
+            placeable = true;
+            var x = randRange(100, game.config.width-200);
+            var y = randRange(100, game.config.height-100);
+            if (sticks.length > 0) {
+               for (var j = 0; j < sticks.length; j++) {
+                   if (x >= sticks[j].x - 50 && x <= sticks[j].x + 50) {
+                        if (y >= sticks[j].y - 50 && y <= sticks[j].y + 50) {
+                            placeable = false;
+                        }
+                   }
+               }
+            } else {
+                placeable = true;
+            }
+        }
+        
         var image = t.add.image(x, y, 'basic_png_twig').setInteractive();
         //image.setScale(1/5, 1/5);
         image.setAngle(0);//randRange(-15, 15));
@@ -211,11 +225,15 @@ function lock() {
 }
 
 function groupSelected() {
-    if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
-        makeBox(gameObj);
-        deleteSelected();
+    if (Lock_unlock == "Unlock") {
+        if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
+            makeBox(gameObj);
+            deleteSelected();
+        } else {
+            alert("Wrong number of sticks");
+        }
     } else {
-        alert("Wrong number of sticks");
+        alert("Please lock the base counter");
     }
 }
 
