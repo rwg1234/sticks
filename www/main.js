@@ -51,10 +51,8 @@ function makeSticks(n, t) {
             var y = randRange(100, game.config.height-100);
             if (sticks.length > 0) {
                for (var j = 0; j < sticks.length; j++) {
-                   if (x >= sticks[j].x - 50 && x <= sticks[j].x + 50) {
-                        if (y >= sticks[j].y - 50 && y <= sticks[j].y + 50) {
-                            placeable = false;
-                        }
+                   if ((sticks[j].getBounds()).contains(x,y)) {
+                        placeable = false;
                    }
                }
             } else {
@@ -64,6 +62,7 @@ function makeSticks(n, t) {
         
         var image = t.add.image(x, y, 'basic_png_twig').setInteractive();
         //image.setScale(1/5, 1/5);
+
         image.setAngle(0);//randRange(-15, 15));
 
         t.input.setDraggable(image);
