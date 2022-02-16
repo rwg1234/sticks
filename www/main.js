@@ -185,7 +185,7 @@ function deleteSelected() {
 }
 
 function updateLabels() {
-    document.getElementById("StickCounter").innerHTML = convert(StickCounter);
+    document.getElementById("StickCounter").innerHTML = convert(StickCounter).concat(" sticks");
     document.getElementById("BaseCounter").innerHTML = convert(BaseCounter);
    // document.getElementById("StickCounter").innerHTML = StickCounter;
    // document.getElementById("BaseCounter").innerHTML = BaseCounter;
