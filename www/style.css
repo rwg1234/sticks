@@ -1,5 +1,11 @@
-/* Try It Yourself logo text */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
+
+body {
+	text-align: center;
+}
+
+/* Try It Yourself logo text */
 .try_it_yourself {font-family: 'Joti One', cursive; }
 .try { font-size: 66px; fill: #0063f9; }
 .it { font-size: 48px; fill: #6d00f9; }

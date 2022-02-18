@@ -23,29 +23,27 @@
     <GroupButton onclick="groupSelected()">Group Selected</GroupButton>
     <UngroupButton onclick="ungroupSelected()">Ungroup Selected</UngroupButton>
     -->
-    <center>
-        <svg width="80%" viewBox="0 0 899 550">
-            <!-- main light-blue rectangle -->
-            <rect x="0" y="0" width="899" height="550" fill="#bff0ff" />
+    <svg width="80%" viewBox="0 0 899 550">
+        <!-- main light-blue rectangle -->
+        <rect x="0" y="0" width="899" height="550" fill="#bff0ff" />
+    
+        <!-- "canvas" white square (actual canvas should be slightly smaller than this to avoid the obscured regions) -->
+        <rect x="85" y="72" width="784" height="422" fill="white" stroke="black" stroke-width="2"/>
         
-            <!-- "canvas" white square (actual canvas should be slightly smaller than this to avoid the obscured regions) -->
-            <rect x="85" y="72" width="784" height="422" fill="white" stroke="black" stroke-width="2"/>
-            
-            <!-- green box containing the delete and clear all buttons -->
-            <rect x="64" y="113" width="81" height="357" fill="#d0e357" stroke="black" stroke-width="2" />
-        
-            <!-- blue box containing group size and stick adding controls -->
-            <rect x="64" y="48" width="784" height="66" fill="#389af4" stroke="black" stroke-width="2" />
-        
-            <!-- "Try it yourself" white ellipse (not text) -->
-            <ellipse cx="104.5" cy="81" rx="83" ry="58" fill="white" stroke="black" stroke-width="2" />
-        
-            <!-- "Try it yourself" text -->
-            <text x="16" y="76" class="try try_it_yourself">Try</text>
-            <text x="135" y="75" class="it try_it_yourself">it</text>
-            <text x="43" y="115" class="yourself try_it_yourself">Yourself</text>
-        </svg>
-        </center>
+        <!-- green box containing the delete and clear all buttons -->
+        <rect x="64" y="113" width="81" height="357" fill="#d0e357" stroke="black" stroke-width="2" />
+    
+        <!-- blue box containing group size and stick adding controls -->
+        <rect x="64" y="48" width="784" height="66" fill="#389af4" stroke="black" stroke-width="2" />
+    
+        <!-- "Try it yourself" white ellipse (not text) -->
+        <ellipse cx="104.5" cy="81" rx="83" ry="58" fill="white" stroke="black" stroke-width="2" />
+    
+        <!-- "Try it yourself" text -->
+        <text x="16" y="76" class="try try_it_yourself">Try</text>
+        <text x="135" y="75" class="it try_it_yourself">it</text>
+        <text x="43" y="115" class="yourself try_it_yourself">Yourself</text>
+    </svg>
     <!--
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
