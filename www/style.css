@@ -3,13 +3,14 @@
 
 body {
 	text-align: center;
+	background-color: #bff0ff;
 }
 
 svg {
-	width: 80vw;
-	height: 49.5vw;
-	max-height: 90vh;
-	max-width: 145.5vh;
+	width: 95vw;
+	height: calc(width * 550 / 899);
+	max-height: 95vh;
+	max-width: calc(max-height * 899 / 550);
 }
 
 /* Try It Yourself logo text */
