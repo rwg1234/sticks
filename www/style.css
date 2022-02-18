@@ -5,6 +5,13 @@ body {
 	text-align: center;
 }
 
+svg {
+	width: 80vw;
+	height: 49.5vw;
+	max-height: 90vh;
+	max-width: 145.5vh;
+}
+
 /* Try It Yourself logo text */
 .try_it_yourself { font-family: 'Joti One', cursive; }
 .try { font-size: 66px; fill: #0063f9; }
