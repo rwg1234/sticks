@@ -15,7 +15,18 @@ body {
 .label { font-family: 'Poller One', cursive; font-size: 26px; }
 
 /* Button text */
-.button { font-family: 'Poller One', cursive; font-size: 25px; fill: white; stroke: black; }
-
+.button {
+	font-family: 'Poller One', cursive; font-size: 25px; fill: white;
+}
+.smaller_button {
+	fill: black;
+	font-size: 8px;
+}
+.medium_button {
+	font-size: 12px;
+}
+.button_outlined {
+	stroke: black;
+}
 /* Value text */
 .value { font-family: 'Architects Daughter', cursive; font-size: 22px; }
