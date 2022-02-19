@@ -36,5 +36,13 @@ svg {
 .button_outlined {
 	stroke: black;
 }
+
 /* Value text */
 .value { font-family: 'Architects Daughter', cursive; font-size: 22px; }
+
+/* Footer links text */
+.footer_link {
+	font-family: 'Joti One', cursive;
+	font-size: 13px;
+	fill: #467786;
+}
