@@ -29,6 +29,11 @@
     
         <!-- "canvas" white square (actual canvas should be slightly smaller than this to avoid the obscured regions) -->
         <rect x="85" y="72" width="784" height="422" fill="white" stroke="black" stroke-width="2"/>
+
+        <!-- actual canvas -->
+        <foreignObject id="canvasContainer" x="145" y="114" width="703" height="357">
+            <!-- <canvas width="703px" height="357px" id="theCanvas"></canvas> -->
+        </foreignObject>
         
         <!-- green box containing the delete and clear all buttons -->
         <rect x="64" y="113" width="81" height="357" fill="#d0e357" stroke="black" stroke-width="2" />
@@ -114,9 +119,9 @@
             <text x="584" y="447" text-anchor="middle" class="button button_outlined">Ungroup</text>
         </a>
     </svg>
-    <!--
+    
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
     <script src="toword.js"></script>
-    -->
+    
 </body>

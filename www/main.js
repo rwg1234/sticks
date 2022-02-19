@@ -1,12 +1,16 @@
+const ZOOM_FACTOR = 2;
+
 var config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 703*ZOOM_FACTOR,
+    height: 357*ZOOM_FACTOR,
+    zoom: 1/ZOOM_FACTOR,
     backgroundColor: '#ffffff',
     scene: {
         preload: preload,
         create: create
-    }
+    },
+    parent: "canvasContainer"
 };
 
 var game = new Phaser.Game(config);
