@@ -13,6 +13,20 @@ svg {
 	max-width: calc(max-height * 899 / 550);
 }
 
+/* Disable text highlighting on SVG elements
+from stack overflow answer https://stackoverflow.com/a/50084247 */
+text {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* according to https://caniuse.com/?search=user-select 96.92% of users'
+browsers support user-select with prefixes, but only 75% support it unprefixed.
+That 25% includes up-to-date safari and safari on iOS, and since it's likely
+someone will try to use this on an iPad, we should try to support safari on iOS.
+*/
+
 /* Try It Yourself logo text */
 .try_it_yourself { font-family: 'Joti One', cursive; }
 .try { font-size: 66px; fill: #0063f9; }
