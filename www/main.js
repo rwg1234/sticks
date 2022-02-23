@@ -188,11 +188,8 @@ function deleteSelected() {
 }
 
 function updateLabels() {
-    document.getElementById("StickCounter").innerHTML = convert(StickCounter).concat(" sticks");
-    document.getElementById("BaseCounter").innerHTML = convert(BaseCounter);
-   // document.getElementById("StickCounter").innerHTML = StickCounter;
-   // document.getElementById("BaseCounter").innerHTML = BaseCounter;
-    document.getElementById("lock_unlock").innerHTML = Lock_unlock;
+    document.getElementById("StickCounter").textContent = convert(StickCounter);
+    document.getElementById("BaseCounter").textContent = convert(BaseCounter);
 }
 function incrementSticks(n) {
     StickCounter += n;

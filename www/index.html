@@ -27,12 +27,12 @@
         <!-- main light-blue rectangle (not needed due to body colour) -->
         <!-- <rect x="0" y="0" width="899" height="550" fill="#bff0ff" /> -->
     
-        <!-- "canvas" white square (actual canvas should be slightly smaller than this to avoid the obscured regions) -->
+        <!-- "canvas" white square (actual canvas is slightly smaller than this to avoid the obscured regions) -->
         <rect x="85" y="72" width="784" height="422" fill="white" stroke="black" stroke-width="2"/>
 
         <!-- actual canvas -->
         <foreignObject id="canvasContainer" x="145" y="114" width="703" height="357">
-            <!-- <canvas width="703px" height="357px" id="theCanvas"></canvas> -->
+            <!-- <canvas width="703px" height="357px" id="theCanvas"></canvas> --> <!-- js library will fill this in for us -->
         </foreignObject>
         
         <!-- green box containing the delete and clear all buttons -->
@@ -63,11 +63,15 @@
             <!-- grey container -->
             <rect x="387" y="70" width="82" height="22" fill="#c4c4c4" stroke="black" stroke-width="2" />
             <!-- up button -->
-            <rect x="387" y="48" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementBase(1)">
+                <rect x="387" y="48" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
             <!-- value label -->
-            <text x="428" y="88" text-anchor="middle" class="value">three</text>
+            <text x="428" y="88" text-anchor="middle" class="value" id="BaseCounter" >three</text>
             <!-- down button -->
-            <rect x="387" y="92" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementBase(-1)">
+                <rect x="387" y="92" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
         </g>
         
         <!-- blue box dividing line -->
@@ -88,7 +92,7 @@
             <!-- up fast button -->
             <rect x="602" y="26" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
             <!-- value label -->
-            <text x="657" y="88" text-anchor="middle" class="value">one</text>
+            <text x="657" y="88" text-anchor="middle" class="value" id="StickCounter" >one</text>
             <!-- down button -->
             <rect x="602" y="92" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
             <!-- down fast button -->
