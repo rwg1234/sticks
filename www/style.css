@@ -1,198 +1,85 @@
-.container {
-	display: grid;
-	grid-auto-rows: minmax(min-content, max-content);
-	grid-gap: 20px;
-	height: 100vh;
-	grid-template-columns: 10fr 10fr 15fr 10fr 10fr 4fr 1fr 10fr 15fr 10fr 5fr 5fr 10fr 10fr;
-	grid-template-areas:
-	  ". . . . . BaseIncreaseButton . . . . SticksIncreaseRapidButton SticksIncreaseSlowButton . ."
-	  ". ClearAllButton ClearSelectedButton . Based BaseLabel . BaseLock . AddSticksButton StickCounter StickCounter AddStickslabel ."
-	  ". . . . . BaseDecreaseButton . . . . SticksDecreaseRapidButton SticksDecreaseSlowButton . ."
-	  "GroupButton canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas canvas UngroupButton";
-}
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Joti+One&family=Poller+One&display=swap');
 
-html, body {
-	display: flex;
-    margin: 0;
-    height: 100%;
-    background-color: aqua;
-    text-align: center;
-}
-
-GroupButton {
-	height: 5em;
-	line-height: 5em;
-	grid-area: GroupButton;
-    font-size: 2vh;
-	color: white;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: middle;
-	background-color: lime;
-}	
-
-UngroupButton {
-	height: 5em;
-	line-height: 5em;
-	grid-area: UngroupButton;
-    font-size: 2vh;
-	color: white;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: middle;
-	background-color: salmon;
-}	
-
-BaseLock {
-	height: 2em;
-	line-height: 2em;
-	grid-area: BaseLock;
-    font-size: 2vh;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: center;
-	background-color: salmon;
-}
-
-Based {
-	height: 2em;
-	line-height: 2em;
-	grid-area: Based;
-    font-size: 2vh;
-	vertical-align: center;
-	text-align: right;
-}
-
-
-BaseLabel {
-	height: 2em;
-	line-height: 2em;
-	grid-area: BaseLabel;
-    font-size: 2vh;
-}
-
-BaseIncreaseButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: BaseIncreaseButton;
-	font-size: 2vh;
-}
-
-BaseDecreaseButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: BaseDecreaseButton;
-	font-size: 2vh;
-}
-
-SticksIncreaseRapidButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: SticksIncreaseRapidButton;
-	font-size: 2vh;
+body {
 	text-align: center;
-	vertical-align: center;
-	color: white;
+	background-color: #bff0ff;
 }
 
-SticksIncreaseSlowButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: SticksIncreaseSlowButton;
-	font-size: 2vh;
-	text-align: center;
-	vertical-align: center;
-	color: white;
+/* no h1s in index.html, but they exist in the other two pages */
+h1 {
+	font-family: 'Joti One', cursive;
+	font-size: 5em;
 }
 
-ClearAllButton {
-	height: 2em;
-	line-height: 2em;
-	grid-area: ClearAllButton;
-	font-size: 2vh;
-    font-size: 2vh;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: center;
-	background-color: red;
+#bodydiv {
+	background-color: white;
+	width: 60vw;
+	height: 40vh;
+	margin: auto;
+	font-family: 'Architects Daughter', cursive;
+	font-size: 2em;
+	border: 5px solid black;
 }
 
-ClearSelectedButton {
-	height: 2em;
-	line-height: 2em;
-	grid-area: ClearSelectedButton;
-	font-size: 2vh;
-    font-size: 2vh;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: middle;
-	background-color: rebeccapurple;
-	color: white;
+#goBack {
+	font-family: 'Joti One', cursive;
+	text-decoration: none;
+	color: #476686;
+	font-size: 2em;
 }
 
-AddSticksButton {
-	height: 2em;
-	line-height: 2em;
-	grid-area: AddSticksButton;
-    font-size: 2vh;
-	border-style: solid;
-	border-collapse: gray;
-	border-width: 3px;
-	border-radius: 5px;
-	vertical-align: center;
-	background-color: lime;
-	color: white;
+svg {
+	width: 95vw;
+	height: calc(width * 550 / 899);
+	max-height: 95vh;
+	max-width: calc(max-height * 899 / 550);
 }
 
-StickCounter {
-	height: 2em;
-	line-height: 2em;
-	grid-area: StickCounter;
-    font-size: 2vh;
-	font-style: bold;
+/* Disable text highlighting on SVG elements
+from stack overflow answer https://stackoverflow.com/a/50084247 */
+text {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* according to https://caniuse.com/?search=user-select 96.92% of users'
+browsers support user-select with prefixes, but only 75% support it unprefixed.
+That 25% includes up-to-date safari and safari on iOS, and since it's likely
+someone will try to use this on an iPad, we should try to support safari on iOS.
+*/
+
+/* Try It Yourself logo text */
+.try_it_yourself { font-family: 'Joti One', cursive; }
+.try { font-size: 66px; fill: #0063f9; }
+.it { font-size: 48px; fill: #6d00f9; }
+.yourself { font-size: 33px; fill: #f90077; }
+
+/* Label text */
+.label { font-family: 'Poller One', cursive; font-size: 26px; }
+
+/* Button text */
+.button {
+	font-family: 'Poller One', cursive; font-size: 25px; fill: white;
+}
+.smaller_button {
+	fill: black;
+	font-size: 8px;
+}
+.medium_button {
+	font-size: 12px;
+}
+.button_outlined {
+	stroke: black;
 }
 
-AddStickslabel {
-	height: 2em;
-	line-height: 2em;
-	grid-area: AddStickslabel;
-    font-size: 2vh;
-	border-style: none;
-}
+/* Value text */
+.value { font-family: 'Architects Daughter', cursive; font-size: 22px; }
 
-SticksDecreaseRapidButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: SticksDecreaseRapidButton;
-    font-size: 2vh;
-	text-align: center;
-	vertical-align: center;
-	color: white;
-}
-
-SticksDecreaseSlowButton {
-	height: 1em;
-	line-height: 1em;
-	grid-area: SticksDecreaseSlowButton;
-    font-size: 2vh;
-	text-align: center;
-	vertical-align: center;
-	color: white;
-}
-
-/* partial window canvas */
-canvas {
-	grid-area:canvas;
-	height: 100%;
-	width: 100%;
+/* Footer links text */
+.footer_link {
+	font-family: 'Joti One', cursive;
+	font-size: 13px;
+	fill: #467786;
 }

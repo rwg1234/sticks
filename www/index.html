@@ -1,26 +1,143 @@
 <!DOCTYPE html>
 <head>
-    <title>E-Concrete Demonstratives</title>
+    <title>Try it Yourself</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="body" class="container" onload="updateLabels();">
-    <ClearAllButton onclick="clearSticks()">Clear all</ClearAllButton>
-    <ClearSelectedButton onclick="deleteSelected()">Delete selected</ClearSelectedButton>
-    <Based>Groups of</Based>
-    <BaseLock onclick="lock()" id="lock_unlock">Lock</BaseLock>
-    <BaseIncreaseButton onclick="incrementBase(1)">+</BaseIncreaseButton>
-    <BaseLabel id="BaseCounter" style="color : black"></BaseLabel>
-    <BaseDecreaseButton onclick="incrementBase(-1)">-</BaseDecreaseButton>
-    <AddSticksButton onclick="createSticks()"> Add </AddSticksButton>
-    <AddStickslabel onclick="createSticks()"> sticks </AddSticksLabel>
-    <SticksIncreaseRapidButton onclick="incrementSticks(10)">++</SticksIncreaseRapidButton>
-    <SticksIncreaseSlowButton onclick="incrementSticks(1)">+</SticksIncreaseSlowButton>
-    <StickCounter id="StickCounter"></StickCounter>
-    <SticksDecreaseSlowButton onclick="incrementSticks(-1)">-</SticksDecreaseSlowButton>
-    <SticksDecreaseRapidButton onclick="incrementSticks(-10)">--</SticksDecreaseRapidButton>
-    <GroupButton onclick="groupSelected()">Group Selected</GroupButton>
-    <UngroupButton onclick="ungroupSelected()">Ungroup Selected</UngroupButton>
+    <svg viewBox="0 0 899 550">
+        <!-- main light-blue rectangle (not needed due to body colour) -->
+        <!-- <rect x="0" y="0" width="899" height="550" fill="#bff0ff" /> -->
+    
+        <!-- "canvas" white square (actual canvas is slightly smaller than this to avoid the obscured regions) -->
+        <rect x="85" y="72" width="784" height="422" fill="white" stroke="black" stroke-width="2"/>
+
+        <!-- actual canvas -->
+        <foreignObject id="canvasContainer" x="145" y="114" width="703" height="357">
+            <!-- <canvas width="703px" height="357px" id="theCanvas"></canvas> --> <!-- js library will fill this in for us -->
+        </foreignObject>
+        
+        <!-- green box containing the delete and clear all buttons -->
+        <rect x="64" y="113" width="81" height="357" fill="#d0e357" stroke="black" stroke-width="2" />
+        <!-- green box dividing line -->
+        <line x1="64" y1="291" x2="145" y2="291" stroke="black" stroke-width="2" />
+        <!-- delete selected button -->
+        <a href="javascript:deleteSelected()">
+            <!-- invisible container rectangle -->
+            <rect x="67" y="319" width="75" height="66" fill="#d0e357" />
+            <!-- icon (available from https://www.iconpacks.net/free-icon/delete-10408.html - free to use even without attribution) -->
+            <image x="79" y="319" href="assets/rubbish_bin_free.svg" width="51" />
+            <!-- text -->
+            <text x="104.5" y="385" text-anchor="middle" class="smaller_button button">Delete Selected</text>
+        </a>
+        <!-- clear all button -->
+        <a href="javascript:clearSticks()">
+            <rect x="71" y="427" width="67" height="23" rx="5" fill="#df3333" stroke="black" stroke-width="2" />
+            <text x="104.5" y="443" text-anchor="middle" class="medium_button button">Clear all</text>
+        </a>
+    
+        <!-- blue box containing group size and stick adding controls -->
+        <rect x="64" y="48" width="784" height="66" fill="#389af4" stroke="black" stroke-width="2" />
+        <!-- group size label -->
+        <text x="195" y="90" class="label">Group size:</text>
+        <!-- group size spinner -->
+        <g>
+            <!-- grey container -->
+            <rect x="387" y="70" width="82" height="22" fill="#c4c4c4" stroke="black" stroke-width="2" />
+            <!-- up button -->
+            <a href="javascript:incrementBase(1)">
+                <rect x="387" y="48" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="422" y="48" width="12" height="22" href="assets/arrow-up-solid.svg" />
+            </a>
+            <!-- value label -->
+            <text x="428" y="88" text-anchor="middle" class="value" id="BaseCounter" >three</text>
+            <!-- down button -->
+            <a href="javascript:incrementBase(-1)">
+                <rect x="387" y="92" width="82" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="422" y="92" width="12" height="22" href="assets/arrow-down-solid.svg" />
+            </a>
+        </g>
+        
+        <!-- blue box dividing line -->
+        <line x1="490" y1="48" x2="490" y2="114" stroke="black" stroke-width="2" />
+
+        <!-- "add" button -->
+        <a href="javascript:createSticks()">
+            <rect x="511" y="62" width="70" height="38" rx="10" fill="#62e357" stroke="black" stroke-width="2" />
+            <text x="546" y="91" text-anchor="middle" class="button button_outlined">Add</text>
+        </a>
+
+        <!-- number of sticks to add spinner -->
+        <g>
+            <!-- grey container -->
+            <rect x="602" y="70" width="110" height="22" fill="#c4c4c4" stroke="black" stroke-width="2" />
+            <!-- up button -->
+            <a href="javascript:incrementSticks(1)">
+                <rect x="602" y="48" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="631" y="48" width="12" height="22" href="assets/arrow-up-solid.svg" />
+                <image x="671" y="52" width="12" height="14" href="assets/person-walking-solid.svg" />
+            </a>
+            <!-- up fast button -->
+            <a href="javascript:incrementSticks(10)">
+                <rect x="602" y="26" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="636" y="26" width="12" height="22" href="assets/arrow-up-solid.svg" />
+                <image x="626" y="26" width="12" height="22" href="assets/arrow-up-solid.svg" />
+                <image x="671" y="26" width="12" height="22" href="assets/person-running-solid.svg" />
+            </a>
+            <!-- value label -->
+            <text x="657" y="88" text-anchor="middle" class="value" id="StickCounter" >one</text>
+            <!-- down button -->
+            <a href="javascript:incrementSticks(-1)">
+                <rect x="602" y="92" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="631" y="92" width="12" height="22" href="assets/arrow-down-solid.svg" />
+                <image x="671" y="96" width="12" height="14" href="assets/person-walking-solid.svg" />
+            </a>
+            <!-- down fast button -->
+            <a href="javascript:incrementSticks(-10)">
+                <rect x="602" y="114" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+                <image x="636" y="114" width="12" height="22" href="assets/arrow-down-solid.svg" />
+                <image x="626" y="114" width="12" height="22" href="assets/arrow-down-solid.svg" />
+                <image x="671" y="114" width="12" height="22" href="assets/person-running-solid.svg" />
+            </a>
+        </g>
+        <!-- sticks label -->
+        <text x="725" y="90" class="label">Sticks</text>
+        <!-- stick image -->
+        <image x="830" y="53" href="assets/match_icon.png" height="53" />
+    
+        <!-- "Try it yourself" white ellipse -->
+        <g>
+            <ellipse cx="104.5" cy="81" rx="83" ry="58" fill="white" stroke="black" stroke-width="2" />
+            <text x="16" y="76" class="try try_it_yourself">Try</text>
+            <text x="135" y="75" class="it try_it_yourself">it</text>
+            <text x="43" y="115" class="yourself try_it_yourself">Yourself</text>
+        </g>
+
+        <!-- group button -->
+        <a href="javascript:groupSelected()">
+            <rect x="347" y="419" width="132" height="38" rx="10" fill="#62e357" stroke="black" stroke-width="2" />
+            <text x="413" y="447" text-anchor="middle" class="button button_outlined">Group</text>
+        </a>
+
+        <!-- ungroup button -->
+        <a href="javascript:ungroupSelected()">
+            <rect x="509" y="419" width="150" height="38" rx="10" fill="#df3333" stroke="black" stroke-width="2" />
+            <text x="584" y="447" text-anchor="middle" class="button button_outlined">Ungroup</text>
+        </a>
+
+        <!-- footer links -->
+        <a href="how_to_use.html">
+            <text x="237" y="525" text-anchor="middle" class="footer_link">How to Use</text>
+        </a>
+        <a href="https://www.gla.ac.uk/schools/education/">
+            <text x="477" y="525" text-anchor="middle" class="footer_link">School of Education</text>
+        </a>
+        <a href="about.html">
+            <text x="717" y="525" text-anchor="middle" class="footer_link">About</text>
+        </a>
+    </svg>
+    
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <script src="main.js"></script>
     <script src="toword.js"></script>
+    
 </body>
