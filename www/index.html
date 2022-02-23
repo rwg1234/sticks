@@ -88,15 +88,23 @@
             <!-- grey container -->
             <rect x="602" y="70" width="110" height="22" fill="#c4c4c4" stroke="black" stroke-width="2" />
             <!-- up button -->
-            <rect x="602" y="48" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementSticks(1)">
+                <rect x="602" y="48" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
             <!-- up fast button -->
-            <rect x="602" y="26" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementSticks(10)">
+                <rect x="602" y="26" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
             <!-- value label -->
             <text x="657" y="88" text-anchor="middle" class="value" id="StickCounter" >one</text>
             <!-- down button -->
-            <rect x="602" y="92" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementSticks(-1)">
+                <rect x="602" y="92" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
             <!-- down fast button -->
-            <rect x="602" y="114" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            <a href="javascript:incrementSticks(-10)">
+                <rect x="602" y="114" width="110" height="22" rx="5" fill="#acd7ff" stroke="black" stroke-width="2" />
+            </a>
         </g>
         <!-- sticks label -->
         <text x="725" y="90" class="label">Sticks</text>
