@@ -6,6 +6,29 @@ body {
 	background-color: #bff0ff;
 }
 
+/* no h1s in index.html, but they exist in the other two pages */
+h1 {
+	font-family: 'Joti One', cursive;
+	font-size: 5em;
+}
+
+#bodydiv {
+	background-color: white;
+	width: 60vw;
+	height: 40vh;
+	margin: auto;
+	font-family: 'Architects Daughter', cursive;
+	font-size: 2em;
+	border: 5px solid black;
+}
+
+#goBack {
+	font-family: 'Joti One', cursive;
+	text-decoration: none;
+	color: #476686;
+	font-size: 2em;
+}
+
 svg {
 	width: 95vw;
 	height: calc(width * 550 / 899);
