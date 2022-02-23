@@ -57,7 +57,7 @@ someone will try to use this on an iPad, we should try to support safari on iOS.
 .yourself { font-size: 33px; fill: #f90077; }
 
 /* Label text */
-.label { font-family: 'Poller One', cursive; font-size: 26px; }
+.label { font-family: 'Poller One', cursive; font-size: 22px; }
 
 /* Button text */
 .button {
