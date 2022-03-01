@@ -203,7 +203,7 @@ function incrementSticks(n) {
 }
 
 function incrementBase(n) {
-    if (Lock_unlock == "Lock") {
+    if (Lock_unlock == "Unlock") {
         BaseCounter += n;
         if(BaseCounter <1 ) {
             BaseCounter = 1;
@@ -211,29 +211,26 @@ function incrementBase(n) {
         if(BaseCounter > 12) {
             BaseCounter = 12;
         }
+    } else {
+        alert("You cannot change the group size when other groups exist");
     }
     updateLabels();
 }
 
-function lock() {
-    if (Lock_unlock == "Lock") {
-        Lock_unlock = "Unlock";
-    } else {
-        Lock_unlock = "Lock";
-    }
+function lock(value) {
+    Lock_unlock = value;
     updateLabels();
 }
 
 function groupSelected() {
-    if (Lock_unlock == "Unlock") {
-        if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
-            makeBox(gameObj);
-            deleteSelected();
-        } else {
-            alert("Wrong number of sticks");
-        }
+    if (selected_sticks_indices.size == BaseCounter && selected_boxes_indices.size == 0) {
+        makeBox(gameObj);
+        deleteSelected();
     } else {
-        alert("Please lock the base counter");
+        alert("Wrong number of sticks");
+    }
+    if (boxes.length == 1) {
+        lock("Lock");
     }
 }
 
@@ -256,4 +253,8 @@ function ungroupSelected() {
     selected_sticks_indices = new Set();
     deleteSelected();
     selected_sticks_indices = backup_selected_sticks;
+
+    if (boxes.length == 0) {
+        lock("Unlock");
+    }
 }
