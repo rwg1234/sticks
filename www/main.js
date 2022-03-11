@@ -90,7 +90,7 @@ var selected_sticks_indices = new Set();
 var selected_boxes_indices = new Set();
 var StickCounter = 1;
 var BaseCounter = 3;
-var Lock_unlock = "Lock";
+var Lock_unlock = "Unlocked";
 
 function createSticks() {
     for (var i=0; i<StickCounter; i++){
@@ -203,7 +203,7 @@ function incrementSticks(n) {
 }
 
 function incrementBase(n) {
-    if (Lock_unlock == "Unlock") {
+    if (Lock_unlock == "Unlocked") {
         BaseCounter += n;
         if(BaseCounter <1 ) {
             BaseCounter = 1;
@@ -230,7 +230,7 @@ function groupSelected() {
         alert("Wrong number of sticks");
     }
     if (boxes.length == 1) {
-        lock("Lock");
+        lock("Locked");
     }
 }
 
@@ -255,6 +255,6 @@ function ungroupSelected() {
     selected_sticks_indices = backup_selected_sticks;
 
     if (boxes.length == 0) {
-        lock("Unlock");
+        lock("Unlocked");
     }
 }
