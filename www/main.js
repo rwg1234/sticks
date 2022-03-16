@@ -162,7 +162,7 @@ function create() {
             } else {
                 // not currently selected
                 selected_indices.add(i); // add to "selected" set
-                sprites[i].image.setTintFill(0x00FFFF);
+                sprites[i].image.setTint(0x75FFFF);
             }
         }
         is_dragging = false;
