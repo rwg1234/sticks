@@ -1,0 +1,6 @@
+stages:
+    - test
+
+testing:
+    stage: test
+    script: test
