@@ -1,4 +1,4 @@
-const ZOOM_FACTOR = 2;
+const ZOOM_FACTOR = 10;
 
 var config = {
     type: Phaser.AUTO,
@@ -17,8 +17,14 @@ var game = new Phaser.Game(config);
 
 
 function preload() {
-    this.load.image("basic_png_twig", "assets/stick.png");
-    this.load.image("basic_png_box", "assets/box.png");
+    // matchstick
+    this.load.image("match", "assets/sprites/match.png");
+
+    // boxes and stacks, for every base setting
+    for (var i = 1; i <= 12; i++) {
+        this.load.image("box_" + i, "assets/sprites/box_" + i + ".png");
+        this.load.image("stack_" + i, "assets/sprites/stack_" + i + ".png");
+    }
 }
 
 function randRange(min, max) {
@@ -44,6 +50,25 @@ function makeBox(t) {
     sprites.push(new_box);
 }
 
+function makeStack(t) {
+    // find average position of selected boxes
+    var x_total = 0;
+    var y_total = 0;
+    var count = 0;
+    for (var i = 0; i < sprites.length; i++) {
+        if (selected_indices.has(i) && sprites[i].type == "box") {
+            x_total += sprites[i].image.x;
+            y_total += sprites[i].image.y;
+            count += 1;
+        }
+    }
+    let x = x_total / count;
+    let y = y_total / count;
+
+    var new_stack = new Sprite("stack", x, y);
+    sprites.push(new_stack);
+}
+
 function makeStickHere(x, y) {
     var new_stick = Sprite("stick", x, y);
     sprites.push(new_stick);
@@ -59,16 +84,17 @@ class Sprite {
     constructor(type, x, y) {
         this.type = type;
         if (type == "stick") {
-            var image = gameObj.add.image(x, y, 'basic_png_twig').setInteractive();
+            var image = gameObj.add.image(x, y, 'match').setInteractive();
             gameObj.input.setDraggable(image)
             this.image = image;
         } else if (type == "box") {
-            var image = gameObj.add.image(x, y, 'basic_png_box').setInteractive();
+            var image = gameObj.add.image(x, y, 'box_' + BaseCounter).setInteractive();
             gameObj.input.setDraggable(image);
             this.image = image;
         } else if (type == "stack") {
-            console.log("stack not implemented yet");
-            // TODO: implement stacks
+            var image = gameObj.add.image(x, y, 'stack_' + BaseCounter).setInteractive();
+            gameObj.input.setDraggable(image);
+            this.image = image;
         } else {
             console.log("tried to create a Sprite of type " + type);
         }
@@ -136,7 +162,7 @@ function create() {
             } else {
                 // not currently selected
                 selected_indices.add(i); // add to "selected" set
-                sprites[i].image.setTintFill(0x00FFFF);
+                sprites[i].image.setTint(0x75FFFF);
             }
         }
         is_dragging = false;
@@ -216,7 +242,8 @@ function groupSelected() {
         makeBox(gameObj);
         deleteSelected();
     } else if (num_selected_sticks == 0 && num_selected_boxes == BaseCounter && num_selected_stacks == 0) {
-        // TODO: make a stack
+        makeStack(gameObj);
+        deleteSelected();
     } else {
         alert("You have to select " + convert(BaseCounter) + " sticks, or " + convert(BaseCounter) + " boxes to group them.");
     }
