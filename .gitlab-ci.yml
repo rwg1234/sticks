@@ -6,4 +6,5 @@ stages:
 testing:
   stage: build-test
   script:
+    - npm i jest-cli -g
     - jest
