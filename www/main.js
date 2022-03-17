@@ -254,7 +254,7 @@ function groupSelected() {
 		alert("Nothing selected.\nTry selecting some things by clicking on them.");
     } else {
         //alert("You have to select " + convert(BaseCounter) + " sticks, or " + convert(BaseCounter) + " boxes to group them.");
-		alert("You have selected the wrong number of things to group them.\nTry selecting a different amount of the same things and grupping them.");
+		alert("You have selected the wrong number of things to group them.\nTry selecting a different amount of the same things and grouping them.");
     }
 }
 
