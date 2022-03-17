@@ -14,3 +14,5 @@ function convert(num) {
   if (num == 0) return "zero";
   else return convert_tens(num);
 }
+
+module.exports = convert;
