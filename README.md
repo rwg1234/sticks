@@ -1,6 +1,6 @@
 # Try it Yourself
 
-A Web app for School of Education of Glasgow to help children count.
+A web app made by Computer Science students at the University of Glasgow for the same university's School of Education to help children learn about numbers.
 
 ## Compatibility
 
@@ -10,7 +10,7 @@ But may not work with Samsung's browser, or with Mac OS Safari (although it does
 
 ## Deployment
 
-To deploy, simply make the contents of the /www/ directory availible on any static web server.
+To deploy, simply make the contents of the /www/ directory available on any static web server.
 Note that the javascript will not work if you run it without a server, you need a server for phaser.js.
 If you want to test it without deploying anywhere, you can use `python -m http.server` or something similar.
 
