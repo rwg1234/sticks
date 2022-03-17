@@ -4,9 +4,9 @@ A Web app for School of Education of Glasgow to help children count.
 
 ## Compatibility
 
-Works on PC/phones/iPad with Windows/ios/MacOS with Google Chrome/Firefox/Microsoft Edge
+Works with Google Chrome/Mozilla Firefox/Microsoft Edge.
 
-BUT may not work with apple Safari or Samsung Browser.
+But may not work with Samsung's browser, or with Mac OS Safari (although it does appear to work on iOS Safari).
 
 ## Deployment
 
@@ -16,14 +16,18 @@ If you want to test it without deploying anywhere, you can use `python -m http.s
 
 ## Usage
 
-Read more on How to Use page
+Read more on the How to Use page.
 
 ## Contributors
 
-2469780m Lewis Munro
+2469780M Lewis Munro
 
-2460896g Rory Graham
+2460896G Rory Graham
 
-2483099d Maximilian Donar
+2483099D Maximilian Donar
 
-2431251l Yiwei Liu
+2431251L Yiwei Liu
+
+## License
+
+The code in this repository is licensed under the MIT license. See license.txt for more information.
