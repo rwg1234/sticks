@@ -103,6 +103,10 @@ class Sprite {
 
 function createSticks() {
     for (var i=0; i<StickCounter; i++){
+		if (sprites.length > 175) {
+			alert("You are trying to add too many things. You can only have hundred and seventy five things at one time on the white background.\nTry something with the current things to be able to add more.");
+			break;
+		}
         // sticks.push(makeSticks(1, gameObj)[0]);
         var placeable = false;
         var x;
@@ -218,7 +222,7 @@ function incrementBase(n) {
             BaseCounter = 12;
         }
     } else {
-        alert("You can't change the group size when there are boxes or stacks.");
+        alert("You cannot change the group size when there are boxes or stacks on the white background. \nTry having only sticks or nothing on the white background to be allowed to change the group size.");
     }
     updateLabels();
 }
@@ -245,7 +249,8 @@ function groupSelected() {
         makeStack(gameObj);
         deleteSelected();
     } else {
-        alert("You have to select " + convert(BaseCounter) + " sticks, or " + convert(BaseCounter) + " boxes to group them.");
+        //alert("You have to select " + convert(BaseCounter) + " sticks, or " + convert(BaseCounter) + " boxes to group them.");
+		alert("You have selected the wrong number of things to group them.\nTry selecting a different amount of the same things and grupping them.");
     }
 }
 
