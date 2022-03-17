@@ -15,10 +15,10 @@ h1 {
 #bodydiv {
 	background-color: white;
 	width: 60vw;
-	height: 40vh;
+	height: 50vh;
 	margin: auto;
 	font-family: 'Architects Daughter', cursive;
-	font-size: 2em;
+	font-size: 1em;
 	border: 5px solid black;
 }
 
