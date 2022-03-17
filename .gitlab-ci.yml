@@ -6,5 +6,4 @@ stages:
 testing:
   stage: build-test
   script:
-    - npm install
-    - npm test "test/test.js"
+    - jest
