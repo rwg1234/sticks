@@ -248,6 +248,10 @@ function groupSelected() {
     } else if (num_selected_sticks == 0 && num_selected_boxes == BaseCounter && num_selected_stacks == 0) {
         makeStack(gameObj);
         deleteSelected();
+	} else if (num_selected_stacks != 0) {
+		alert("You can only group sticks or boxes, not stacks of boxes.\nTry deselecting any selected stacks and try again.");
+	} else if (num_selected_sticks == 0 && num_selected_boxes == 0 && num_selected_stacks == 0) {
+		alert("Nothing selected.\nTry selecting some things by clicking on them.");
     } else {
         //alert("You have to select " + convert(BaseCounter) + " sticks, or " + convert(BaseCounter) + " boxes to group them.");
 		alert("You have selected the wrong number of things to group them.\nTry selecting a different amount of the same things and grupping them.");
