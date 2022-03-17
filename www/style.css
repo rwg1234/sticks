@@ -14,12 +14,16 @@ h1 {
 
 #bodydiv {
 	background-color: white;
-	width: 60vw;
-	height: 50vh;
+	width: 80vw;
 	margin: auto;
 	font-family: 'Architects Daughter', cursive;
-	font-size: 1em;
+	font-size: 2em;
 	border: 5px solid black;
+}
+
+#bodydiv.serious_font {
+	/* for the license page */
+	font-family: serif;
 }
 
 #goBack {
