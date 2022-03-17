@@ -30,4 +30,4 @@ Read more on the How to Use page.
 
 ## License
 
-The code in this repository is licensed under the MIT license. See license.txt for more information.
+The code in this repository is licensed under the MIT license. See LICENSE.txt for more information.
