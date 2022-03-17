@@ -1,0 +1,21 @@
+{
+  "name": "test_package",
+  "version": "1.0.0",
+  "description": "to run pipeline tests",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node www/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://stgit.dcs.gla.ac.uk/team-project-h/2021/cs19/cs19-main.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  }
+}

@@ -1,18 +1,33 @@
-<PROJECT NAME>
+# Try it Yourself
 
-A Web app for School of Education of Glasgow to help children count.
+A web app made by Computer Science students at the University of Glasgow for the same university's School of Education to help children learn about numbers.
 
-<Prerequisites>
+## Compatibility
 
-Works on PC/phones/iPad with Windows/ios/MacOS with Google Chrome/Firefox/Microsoft Edge
+Works with Google Chrome/Mozilla Firefox/Microsoft Edge.
 
-BUT may not work with apple Safari or Samsung Browser.
+But may not work with Samsung's browser, or with Mac OS Safari (although it does appear to work on iOS Safari).
 
-<Usage>
-Read more on How to use page
+## Deployment
 
-<Contributors>
-2469780m Lewis Munro
-2460896g Rory Graham
-2483099d Maximilian Donar
-2431251l Yiwei Liu
+To deploy, simply make the contents of the /www/ directory available on any static web server.
+Note that the javascript will not work if you run it without a server, you need a server for phaser.js.
+If you want to test it without deploying anywhere, you can use `python -m http.server` or something similar.
+
+## Usage
+
+Read more on the How to Use page.
+
+## Contributors
+
+2469780M Lewis Munro
+
+2460896G Rory Graham
+
+2483099D Maximilian Donar
+
+2431251L Yiwei Liu
+
+## License
+
+The code in this repository is licensed under the MIT license. See LICENSE.txt for more information.
